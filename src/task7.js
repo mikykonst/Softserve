@@ -1,34 +1,21 @@
-class Fibonachi {
-    constructor(min, max) {
-        this._min = min;
-        this._max = max;
-    }
+function findIntervalFib(min, max) {
 
+    let array = [0, 1];
+    let temp;
 
-    fibonachiInterval() {
-        let result = [this.min, this.min],
-            val = 0;
-        for (let i = this._min; result[i] < this.max; i++) {
-            val = result[i] + result[i - 1];
-            val <= this.max && result.push(val);
+    if (typeof min !== 'number' && typeof max !== 'number') {
+        alert('Input numbers, please!');
+    } else {
+        if (max == null || max === 0) {
+            for (let i = 1; array[i] < min; i++) {
+                temp = array[i] + array[i - 1];
+                temp <= min && array.push(temp);
+            }
+        } else {
+            for (let i = 1, sum = 2; sum <= max; sum += i, i = sum - i)
+                if (sum >= min)
+                    array.push(sum);
         }
-        return result;
     }
-
-    get min() {
-        return this._min;
-    }
-
-    set min(value) {
-        this._min = value;
-    }
-
-    get max() {
-        return this._max;
-    }
-
-    set max(value) {
-        this._max = value;
-    }
+    return array;
 }
-

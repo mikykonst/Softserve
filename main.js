@@ -1,51 +1,113 @@
-/* Task 1 */
-let width = 12;
-let height = 4;
-let symbol = '*';
-chess(width, height, symbol);
+$("#chooseBtn").click(function () {
+    let task = $("#select").val();
+    let container = $("#taskContainer");
 
-/* Task 2 */
-let envelope1 = {width: 3.43, height: 2.23};
-let envelope2 = {width: 3.43, height: 2.87};
-isEnvelopeFeet(envelope1, envelope2);
+    switch (task) {
+        case '1':
+            let w = prompt('Input width:');
+            let h = prompt('Input height:');
+            let s = prompt('Input symbol:');
+            chess(w, h, s);
+            break;
+        case '2':
+            let fs1 = prompt('Input first side of first envelope:');
+            let ss1 = prompt('Input second side of first envelope:');
+            let fs2 = prompt('Input first side of second envelope:');
+            let ss2 = prompt('Input second side of second envelope:');
+            let envelope1 = {width: +fs1, height: +ss1};
+            let envelope2 = {width: +fs2, height: +ss2};
+            container.append('<p>'+isEnvelopeFeet(envelope1, envelope2)+'</p>');
+            break;
+        case '3':
+            let arrayOfTriangles = [];
+            let num = prompt('Input number of triangles:');
+            let res = [];
 
-/* Task 3 */
+            for (let i = 0; i < num; i++) {
+                let name = prompt('Input name:');
+                let a = prompt('Input A-side:');
+                let b = prompt('Input A-side:');
+                let c = prompt('Input A-side:');
 
-let treangle1 = {
-    vertices: 'ABC',
-    a: 5,
-    b: 3,
-    c: 7
-};
+                let triangle = {vertices: name, a: +a, b: +b, c: +c};
 
-let treangle2 = {
-    vertices: 'DEF',
-    a: 12,
-    b: 13,
-    c: 5
-};
+                arrayOfTriangles.push(triangle);
 
-let treangle3 = {
-    vertices: 'HLM',
-    a: 4,
-    b: 5,
-    c: 3
-};
+            }
 
-let array = [];
-array.push(treangle1);
-array.push(treangle2);
-array.push(treangle3);
+            res = triangleSort(arrayOfTriangles);
 
-triangleSort(array);
+            for (let i = 0; i < res.length; i++) {
+                container.append('<p>' + res[i] + '</p><br/>')
+            }
+            break;
+        case '4':
+            let word = prompt('Input word:');
+            container.append('<p>The longest palindrome in word <b>'+ word +'</b> is <b>' + findTheLongest(word) + '</b></p>');
+            break;
+        case '5':
+            run();
+            break;
+        case '6':
+            let length = prompt('Input length of the sequence:');
+            let max = prompt('Input max elem');
 
-/* Task 4 */
-let num = '1234437';
-console.log(findTheLongest(num));
+            container.append('<p>The sequence of ' + length + ' elements is ' + createSequence(length, max).toString() +'</p>');
 
-/* Task 6 */
-console.log(createSequence(4, 10));
+            break;
+        case '7':
+            let minOrLength = prompt('Input min number or the length:');
+            let maxOrNth = prompt('Input max number or nothing:');
 
-/* Task 7 */
-let f = new Fibonachi(0, 100);
-alert(f.fibonachiInterval().toString());
+            container.append('<p>'+ findIntervalFib(+minOrLength, +maxOrNth) +'</p>');
+
+            break;
+    }
+    // let container = $("#taskContainer");
+    //
+    // switch (task) {
+    //     case '1':
+    //         container.text('').append(`
+    //         <fieldset>
+    //                 <legend>Task 1</legend>
+    //                 <input class="form-control input-val" type="number" placeholder="width" required>
+    //                 <input class="form-control input-val" type="number" placeholder="height" required>
+    //                 <input class="form-control input-val" type="number" placeholder="symbol" required>
+    //                 <input id="submit-1" class="btn btn-primary button" type="button" value="submit">
+    //             </fieldset>
+    //         `);
+    //         break;
+    //     case '2':
+    //         container.text('').append(`
+    //         <fieldset>
+    //             <legend>Task 2</legend>
+    //             <fieldset>
+    //                 <legend>First envelope:</legend>
+    //                 <input class="form-control input-val" type="number" placeholder="first side" required>
+    //                 <input class="form-control input-val" type="number" placeholder="second side" required>
+    //             </fieldset>
+    //             <fieldset>
+    //                 <legend>Second envelope:</legend>
+    //                 <input class="form-control input-val" type="number" placeholder="first side" required>
+    //                 <input class="form-control input-val" type="number" placeholder="second side" required>
+    //             </fieldset>
+    //             <input id="submit-2" class="btn btn-primary button" type="button" value="submit">
+    //         </fieldset>`);
+    //         break;
+    //     case '3':
+    //         container.text('').append();
+    //         break;
+    //     case '4':
+    //         alert(2);
+    //         break;
+    //     case '5':
+    //         alert(1);
+    //         break;
+    //     case '6':
+    //         alert(2);
+    //         break;
+    //     case '7':
+    //         alert(1);
+    //         break;
+    // }
+});

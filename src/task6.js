@@ -4,5 +4,5 @@ let createSequence = function (n, m) {
     for (let i = num; i < num + n; i++) {
         arr.push(i);
     }
-    return arr.toString();
+    return arr;
 };

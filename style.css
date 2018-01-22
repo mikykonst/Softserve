@@ -1,0 +1,19 @@
+@import "node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+#taskContainer {
+    overflow: auto;
+}
+
+#chooseBtn {
+    margin-left: 10px;
+}
+
+#choose {
+    margin-top: 20px;
+}
+
+#select {
+    border: 5px solid blueviolet;
+    width: auto;
+    height: auto;
+}

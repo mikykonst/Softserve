@@ -3,15 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="src/task1.js"></script>
-    <script src="src/task2.js"></script>
-    <script src="src/task3.js"></script>
-    <script src="src/task4.js"></script>
-    <script src="src/task6.js"></script>
-    <script src="src/task7.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<script src="main.js"></script>
 
+<div class="container">
+    <div class="row">
+        <div id="choose">
+            <select id="select">
+                <option value="1">Task 1</option>
+                <option value="2">Task 2</option>
+                <option value="3">Task 3</option>
+                <option value="4">Task 4</option>
+                <option value="5">Task 5</option>
+                <option value="6">Task 6</option>
+                <option value="7">Task 7</option>
+            </select>
+
+            <input id="chooseBtn" type="button" class="btn btn-info" value="choose">
+        </div>
+    </div>
+    <div class="row">
+        <div id="taskContainer" class="col-md-12">
+
+        </div>
+    </div>
+</div>
+
+<script src="src/task1.js"></script>
+<script src="src/task2.js"></script>
+<script src="src/task3.js"></script>
+<script src="src/task4.js"></script>
+<script src="src/task5.js"></script>
+<script src="src/task6.js"></script>
+<script src="src/task7.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
