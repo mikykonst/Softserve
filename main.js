@@ -7,7 +7,7 @@ $("#chooseBtn").click(function () {
             let w = prompt('Input width:');
             let h = prompt('Input height:');
             let s = prompt('Input symbol:');
-            chess(w, h, s);
+            console.log(chess(w, h, s));
             break;
         case '2':
             let fs1 = prompt('Input first side of first envelope:');
@@ -56,7 +56,7 @@ $("#chooseBtn").click(function () {
             container.append('<p>The longest palindrome in word <b>'+ word +'</b> is <b>' + findTheLongest(word) + '</b></p>');
             break;
         case '5':
-            alert(inputValues());
+            container.append('<p>'+ inputValues() +'</p>');
             break;
         case '6':
             let length = prompt('Input length of the sequence:');

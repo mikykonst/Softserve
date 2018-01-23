@@ -12,6 +12,7 @@ function findIntervalFib(min, max) {
                 temp <= min && array.push(temp);
             }
         } else {
+            array = [];
             for (let i = 1, sum = 2; sum <= max; sum += i, i = sum - i)
                 if (sum >= min)
                     array.push(sum);

@@ -1,7 +1,7 @@
 let chess = function (width, height, symbol) {
 
-    validateNumbers(width);
-    validateNumbers(height);
+    validateNumbers(parseInt(width));
+    validateNumbers(parseInt(height));
 
     for (let i = 0; i < height; i++) {
         for (let j = 0; j < width; j++) {

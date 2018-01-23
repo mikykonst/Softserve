@@ -1,7 +1,7 @@
 var run = function (trianglesArray) {
     let count = 0;
     for (let i = 0; i < trianglesArray.length; i++) {
-        if (isTriangle()) {
+        if (isTriangle(trianglesArray[i])) {
             count++;
         }
     }
@@ -50,11 +50,7 @@ let ploshad = function (a, b, c) {
 };
 
 let isTriangle = function (triangle) {
-  if (triangle.a + triangle.b > triangle.c) {
-      return true;
-  } else if (triangle.a + triangle.c > triangle.b) {
-      return true;
-  } else if (triangle.c + triangle.b > triangle.a) {
+  if (triangle.a + triangle.b > triangle.c && triangle.a + triangle.c > triangle.b && triangle.c + triangle.b > triangle.a) {
       return true;
   } else {
       return false;

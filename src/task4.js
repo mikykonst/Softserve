@@ -1,13 +1,12 @@
-let longestPalindromeLength = 0;
-let longestPalindrome = '';
-
 function isThisAPalidrome(word) {
     let reverse = (word + '').split('').reverse().join('');
     return word == reverse
 }
 
 function findTheLongest(word) {
-    var w = word +"";
+    var w = word.toString();
+    let longestPalindromeLength = 0;
+    let longestPalindrome = '';
     for (let i = 0; i < w.length; i++) {
         let wordMinusOneFromBeginning = w.substr(i, w.length);
         for (let j = wordMinusOneFromBeginning.length; j > 0; j--) {
