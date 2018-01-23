@@ -1,112 +1,53 @@
-// let start = "";
-// let end = "";
-//
-// let moscowLucky = 0;
-// let peterLucky = 0;
-//
-// function moscow(v) {
-//     let a = 0;
-//     let b = 0;
-//     a += v.toString()[0];
-//     a += v.toString()[1];
-//     a += v.toString()[2];
-//
-//     b += v.toString()[3];
-//     b += v.toString()[4];
-//     b += v.toString()[5];
-//
-//     return (a === b);
-// }
-//
-// function peter(v) {
-//     let a = 0;
-//     let b = 0;
-//     a += v.toString()[0];
-//     a += v.toString()[2];
-//     a += v.toString()[4];
-//
-//     b += v.toString()[1];
-//     b += v.toString()[3];
-//     b += v.toString()[5];
-//
-//     return (a === b);
-// }
-//
-// function run() {
-//     start = prompt('start');
-//     end = prompt('end');
-//
-//     // if (start < 100000 || end < 100000 || start >= end) {
-//     //     alert("Указаные числа должны быть больше 1 000 000.");
-//     //     return;
-//     // }
-//
-//     let max = parseInt(end);
-//
-//     for (let i = start; i <= max;i++) {
-//         if (moscow(i)) {
-//             console.log("Билет №"+i+" счастливый (Москва)");
-//             moscowLucky++;
-//         }
-//         if (peter(i)) {
-//             console.log("Билет №"+i+" счастливый (Питер)");
-//             peterLucky++;
-//         }
-//     }
-//     alert("Московских счастливых билетов : "+moscowLucky+", Питерских - "+peterLucky);
-// }
-function run() {
+let inputValues = function () {
+    let min = prompt('Input the first number of ticket:');
+    let max = prompt('Input the last number of ticket:');
 
-    let start = prompt('start');
-    let end = prompt('end');
+    return start(min, max);
+};
 
-    let arrStart = [];
-    let arrEnd = [];
+let parseNumberToArray = function (ticket) {
+    return ticket.toString().split('').map(function (i) {
+        return +i;
+    });
+};
 
-    arrStart = parseToTicket(start);
-    arrEnd = parseToTicket(end);
+let moscowType = function (ticket) {
+    let arr = parseNumberToArray(ticket);
+    return arr.slice(0, 3).reduce(function (a, b) {
+        return a + b
+    }) === arr.slice(3, 6).reduce((a, b) => a + b);
+};
 
-    function parseToTicket(str) {
-        let arr = [];
-        for (let i = 0; i < 6 - str.split('').length; i++) {
-            arr.push(0);
+
+let peterType = function (ticket) {
+    let arr = parseNumberToArray(ticket);
+    let odd = 0;
+    let even = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 !== 0) {
+            odd += arr[i];
+        } else {
+            even += arr[i];
+        }
+    }
+    return odd === even;
+};
+
+var start = function (min, max) {
+
+    let result = {
+        moscow: 0,
+        peter: 0
+    };
+
+    for (let i = min; i <= max; i++) {
+        if (moscowType(i)) {
+            result.moscow += 1;
         }
 
-        for (let i = 0; i < str.split('').length; i++) {
-            arr.push(str.split('')[i]);
+        if (peterType(i)) {
+            result.peter += 1;
         }
-        return arr;
     }
-
-    function peter(arr) {
-        let a = 0;
-        let b = 0;
-        a += arr[0];
-        a += arr[2];
-        a += arr[4];
-
-        b += arr[1];
-        b += arr[3];
-        b += arr[5];
-
-        return (a == b);
-    }
-
-    function moscow(arr) {
-        let a = 0;
-        let b = 0;
-
-        a += arr[0];
-        a += arr[1];
-        a += arr[2];
-
-        b += arr[3];
-        b += arr[4];
-        b += arr[5];
-
-        return (a == b);
-    }
-
-    let max = 0;
-    alert(arrStart.toString().replace(/,/, ''));
-}
+    return 'Moscow(simple) tickets: ' + result.moscow + '; Peter(hard) tickets: ' + result.peter;
+};

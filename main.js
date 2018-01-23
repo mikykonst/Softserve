@@ -26,27 +26,37 @@ $("#chooseBtn").click(function () {
             for (let i = 0; i < num; i++) {
                 let name = prompt('Input name:');
                 let a = prompt('Input A-side:');
-                let b = prompt('Input A-side:');
-                let c = prompt('Input A-side:');
+                if (validateNumbers(parseFloat(a))) {
+                    alert(parseFloat(a));
+                    alert('Incorrect input, try again!');
+                    a = prompt('Input A-side');
+                }
+                let b = prompt('Input B-side:');
+                if (validateNumbers(parseFloat(b))) {
+                    alert('Incorrect input, try again!');
+                    b = prompt('Input B-side');
+                }
+                let c = prompt('Input C-side:');
+                if (validateNumbers(parseFloat(c))) {
+                    alert('Incorrect input, try again!');
+                    c = prompt('Input C-side');
+                }
 
-                let triangle = {vertices: name, a: +a, b: +b, c: +c};
+
+                let triangle = {vertices: name, a: parseFloat(a), b: parseFloat(b), c: parseFloat(c)};
 
                 arrayOfTriangles.push(triangle);
 
             }
 
-            res = triangleSort(arrayOfTriangles);
-
-            for (let i = 0; i < res.length; i++) {
-                container.append('<p>' + res[i] + '</p><br/>')
-            }
+            res = run(arrayOfTriangles);
             break;
         case '4':
             let word = prompt('Input word:');
             container.append('<p>The longest palindrome in word <b>'+ word +'</b> is <b>' + findTheLongest(word) + '</b></p>');
             break;
         case '5':
-            run();
+            alert(inputValues());
             break;
         case '6':
             let length = prompt('Input length of the sequence:');
