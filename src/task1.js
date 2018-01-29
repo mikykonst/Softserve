@@ -1,17 +1,23 @@
 let chess = function (width, height, symbol) {
 
-    validateNumbers(parseInt(width));
-    validateNumbers(parseInt(height));
 
-    for (let i = 0; i < height; i++) {
-        for (let j = 0; j < width; j++) {
-            if ((j + i) % 2 === 0) {
-                document.write(symbol);
-            } else {
-                document.write('&nbsp');
-            }
-        }
-        document.write('<br/>');
-    }
-    return str;
+
+     if (validateNumbers(parseInt(width)) && validateNumbers(parseInt(height))) {
+         $('#taskContainer').append('<pre></pre>');
+         let container = $('#taskContainer>pre');
+         for (let i = 0; i < height; i++) {
+             for (let j = 0; j < width; j++) {
+                 if ((j + i) % 2 === 0) {
+                     container.append(symbol);
+                 } else {
+                     container.append(' ');
+                 }
+             }
+             container.append('<br/>');
+         }
+     }
+
+
+
+
 };

@@ -1,22 +1,22 @@
-var run = function (trianglesArray) {
+let run = function (trianglesArray) {
     let count = 0;
+    let result = [];
     for (let i = 0; i < trianglesArray.length; i++) {
         if (isTriangle(trianglesArray[i])) {
             count++;
         }
     }
     if (count === trianglesArray.length) {
-        triangleSort(trianglesArray);
+        result = triangleSort(trianglesArray);
     } else {
         alert('Input correct triangles!');
     }
+    return result;
 };
 
 let triangleSort = function (trianglesArray) {
-    let result = [];
 
-
-
+    let res = [];
     for (let i = 0; i < trianglesArray.length - 1; i++) {
         for (let j = 0; j < trianglesArray.length - 1 - i; j++) {
             try {
@@ -33,11 +33,11 @@ let triangleSort = function (trianglesArray) {
         }
     }
     for (let i = 0; i < trianglesArray.length; i++) {
-        result.push(trianglesArray[i].vertices + ': ' + ploshad(trianglesArray[i].a,
+        res.push(trianglesArray[i].vertices + ': ' + ploshad(trianglesArray[i].a,
             trianglesArray[i].b,
             trianglesArray[i].c));
     }
-    return result;
+    return res;
 };
 
 let perimeter = function (a, b, c) {
@@ -50,9 +50,9 @@ let ploshad = function (a, b, c) {
 };
 
 let isTriangle = function (triangle) {
-  if (triangle.a + triangle.b > triangle.c && triangle.a + triangle.c > triangle.b && triangle.c + triangle.b > triangle.a) {
-      return true;
-  } else {
-      return false;
-  }
+    if (triangle.a + triangle.b > triangle.c && triangle.a + triangle.c > triangle.b && triangle.c + triangle.b > triangle.a) {
+        return true;
+    } else {
+        return false;
+    }
 };

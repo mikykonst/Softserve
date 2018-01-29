@@ -17,3 +17,15 @@
     width: auto;
     height: auto;
 }
+
+.form-control {
+    margin: 10px;
+}
+
+form {
+    margin: 10px;
+}
+
+fieldset {
+    margin: 10px;
+}

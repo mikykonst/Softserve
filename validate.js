@@ -3,7 +3,13 @@ let validateNumbers = function (num) {
         alert('Input correct value!');
     } else if (typeof num !== 'number') {
         alert('Input correct value!');
-    } else if (num.toString() === 'NaN') {
+    } else if (isNaN(num)) {
         alert('Input correct value!');
+    } else {
+        return true;
     }
+};
+
+let isInteger = function(num) {
+  return (num ^ 0) === num;
 };

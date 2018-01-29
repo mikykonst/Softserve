@@ -4,14 +4,30 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
 </head>
 <body>
 
 <div class="container">
-    <div class="row">
-        <div id="choose">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">JS Elementary Tasks</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a id="1" class="task-choose" href="#">Task 1</a></li>
+                <li><a id="2" class="task-choose" href="#">Task 2</a></li>
+                <li><a id="3" class="task-choose" href="#">Task 3</a></li>
+                <li><a id="4" class="task-choose" href="#">Task 4</a></li>
+                <li><a id="5" class="task-choose" href="#">Task 5</a></li>
+                <li><a id="6" class="task-choose" href="#">Task 6</a></li>
+                <li><a id="7" class="task-choose" href="#">Task 7</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--<div class="row">
+        &lt;!&ndash;<div id="choose">
             <select id="select">
                 <option value="1">Task 1</option>
                 <option value="2">Task 2</option>
@@ -23,14 +39,18 @@
             </select>
 
             <input id="chooseBtn" type="button" class="btn btn-info" value="choose">
+        </div>&ndash;&gt;
+        <div id="choose">
+
         </div>
-    </div>
+    </div>-->
     <div class="row">
         <div id="taskContainer" class="col-md-12">
 
         </div>
     </div>
 </div>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="validate.js"></script>
 <script src="src/task1.js"></script>
 <script src="src/task2.js"></script>

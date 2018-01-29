@@ -1,10 +1,3 @@
-let inputValues = function () {
-    let min = prompt('Input the first number of ticket:');
-    let max = prompt('Input the last number of ticket:');
-
-    return start(min, max);
-};
-
 let parseNumberToArray = function (ticket) {
     return ticket.toString().split('').map(function (i) {
         return +i;
@@ -33,7 +26,7 @@ let peterType = function (ticket) {
     return odd === even;
 };
 
-var start = function (min, max) {
+var startTickets = function (min, max) {
 
     let result = {
         moscow: 0,

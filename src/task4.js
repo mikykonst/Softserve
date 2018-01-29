@@ -4,7 +4,7 @@ function isThisAPalidrome(word) {
 }
 
 function findTheLongest(word) {
-    var w = word.toString();
+    let w = word.toString();
     let longestPalindromeLength = 0;
     let longestPalindrome = '';
     for (let i = 0; i < w.length; i++) {
