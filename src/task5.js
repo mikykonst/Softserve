@@ -33,13 +33,15 @@ var startTickets = function (min, max) {
         peter: 0
     };
 
-    for (let i = min; i <= max; i++) {
-        if (moscowType(i)) {
-            result.moscow += 1;
-        }
+    if (validateNumbers(parseInt(min)) && validateNumbers(parseInt(max))) {
+        for (let i = min; i <= max; i++) {
+            if (moscowType(i)) {
+                result.moscow += 1;
+            }
 
-        if (peterType(i)) {
-            result.peter += 1;
+            if (peterType(i)) {
+                result.peter += 1;
+            }
         }
     }
     return 'Moscow(simple) tickets: ' + result.moscow + '; Peter(hard) tickets: ' + result.peter;

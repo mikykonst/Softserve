@@ -1,25 +1,25 @@
-function isThisAPalidrome(word) {
+function isThisPalindrome(word) {
     let reverse = (word + '').split('').reverse().join('');
-    return word == reverse
+    return word === reverse
 }
 
 function findTheLongest(word) {
     let w = word.toString();
-    let longestPalindromeLength = 0;
-    let longestPalindrome = '';
+    let palindromeLength = 0;
+    let palindrome = '';
     for (let i = 0; i < w.length; i++) {
-        let wordMinusOneFromBeginning = w.substr(i, w.length);
-        for (let j = wordMinusOneFromBeginning.length; j > 0; j--) {
-            let wordMinusOneFromEnding = wordMinusOneFromBeginning.substr(0, j);
-            if (wordMinusOneFromEnding <= 0)
+        let delFromBegin = w.substr(i, w.length);
+        for (let j = delFromBegin.length; j > 0; j--) {
+            let delFromEnding = delFromBegin.substr(0, j);
+            if (delFromEnding <= 0)
                 continue;
-            if (isThisAPalidrome(wordMinusOneFromEnding)) {
-                if (wordMinusOneFromEnding.length > longestPalindromeLength) {
-                    longestPalindromeLength = wordMinusOneFromEnding.length;
-                    longestPalindrome = wordMinusOneFromEnding;
+            if (isThisPalindrome(delFromEnding)) {
+                if (delFromEnding.length > palindromeLength) {
+                    palindromeLength = delFromEnding.length;
+                    palindrome = delFromEnding;
                 }
             }
         }
     }
-    return longestPalindrome;
+    return palindrome;
 }

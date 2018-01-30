@@ -1,7 +1,5 @@
 let chess = function (width, height, symbol) {
 
-
-
      if (validateNumbers(parseInt(width)) && validateNumbers(parseInt(height))) {
          $('#taskContainer').append('<pre></pre>');
          let container = $('#taskContainer>pre');
@@ -16,8 +14,4 @@ let chess = function (width, height, symbol) {
              container.append('<br/>');
          }
      }
-
-
-
-
 };

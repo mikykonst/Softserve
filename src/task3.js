@@ -1,4 +1,4 @@
-let run = function (trianglesArray) {
+let runTriangles = function (trianglesArray) {
     let count = 0;
     let result = [];
     for (let i = 0; i < trianglesArray.length; i++) {
@@ -33,9 +33,7 @@ let triangleSort = function (trianglesArray) {
         }
     }
     for (let i = 0; i < trianglesArray.length; i++) {
-        res.push(trianglesArray[i].vertices + ': ' + ploshad(trianglesArray[i].a,
-            trianglesArray[i].b,
-            trianglesArray[i].c));
+        res.push(trianglesArray[i].vertices);
     }
     return res;
 };

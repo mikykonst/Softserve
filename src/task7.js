@@ -1,32 +1,45 @@
 function findIntervalFib(min, max) {
+    let array = [0, 1];
+    if (isInteger(min) && validateNumbers(min)) {
 
-    if (isInteger(min)) {
-        let array = [0, 1];
         let temp;
 
-        if (typeof min !== 'number' && typeof max !== 'number') {
-            alert('Input numbers, please!');
-        } else {
-            if (max == null || max === 0) {
-                for (let i = 1; array[i] < min; i++) {
-                    temp = array[i] + array[i - 1];
-                    temp <= min && array.push(temp);
+        if (isNaN(max)) {
+            array = lengthSequence(min);
+        } else if (isInteger(max)) {
+            array = [];
+            /*for (let i = 1, sum = 2; sum <= max; sum += i, i = sum - i) {
+                if (sum >= min) {
+                    array.push(sum);
                 }
-            } else if (isInteger(max)) {
-                array = [];
-                for (let i = 1, sum = 2; sum <= max; sum += i, i = sum - i) {
-                    if (sum >= min) {
-                        array.push(sum);
+            }*/
+            for (let i = 0; i < max; i++) {
+
+                if (fibbonachi(i) > min) {
+                    if (fibbonachi(i) <= max) {
+                        array.push(fibbonachi(i));
+                    } else {
+                        break;
                     }
+
                 }
             }
         }
-    } else {
-        alert('Input only integer values!');
     }
-
     return array;
 }
+
+function fibbonachi(n) {
+    var a = 1,
+        b = 1;
+    for (var i = 3; i <= n; i++) {
+        var c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
 
 let lengthSequence = function (l) {
     let min = '1';
@@ -37,7 +50,5 @@ let lengthSequence = function (l) {
     }
     max += '0';
 
-    for (let i = min; i < max; i++) {
-        console.log(i);
-    }
+    return findIntervalFib(+min, +max);
 };

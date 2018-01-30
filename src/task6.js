@@ -3,7 +3,7 @@ let createSequence = function (n, m) {
         let num = Math.ceil(Math.sqrt(m));
         let arr = [];
 
-        for (let i = 0; i < n; i++) {
+        for (let i = m; i < n; i++) {
             arr.push(num);
             num++;
         }

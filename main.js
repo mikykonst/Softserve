@@ -38,7 +38,7 @@ $(document).ready(function () {
                     envelope2.w = parseFloat(w2);
                     envelope2.h = parseFloat(h2);
 
-                    container.append('<pre>' + isEnvelopeFeet(envelope1, envelope2) + '</pre>');
+                    $('#env').text(isEnvelopeFeet(envelope1, envelope2));
                 });
 
 
@@ -66,7 +66,7 @@ $(document).ready(function () {
                         let temp = arr.slice(i, i + 4);
                         arrayOfTriangles.push({vertices: temp[0], a: +temp[1], b: +temp[2], c: +temp[3]});
                     }
-                    alert(run(arrayOfTriangles).toString());
+                    alert(runTriangles(arrayOfTriangles).toString());
                 };
                 break;
             case '4':
@@ -94,7 +94,7 @@ $(document).ready(function () {
                     if (tickets[0] > tickets[1]) {
                         alert('First ticket must be smaller then second!');
                     } else {
-                        alert(startTickets(tickets[0], tickets[1]));
+                        $('#ticket').text(startTickets(tickets[0], tickets[1]));
                     }
                 });
                 break;
@@ -112,7 +112,11 @@ $(document).ready(function () {
             case '7':
                 clearContainer();
                 container.append(task7());
-
+                $('#submit-7').click(function () {
+                    let min = parseInt($('#min').val());
+                    let max = parseInt($('#max').val());
+                    $('#fib').text(findIntervalFib(min, max).toString());
+                });
                 break;
         }
     };
@@ -152,6 +156,7 @@ $(document).ready(function () {
                     ${secondEnvSideA}
                     ${secondEnvSideB}
                 </form>
+                <pre id="env"></pre>
                 ${submit}
             </fieldset>`;
     };
@@ -196,6 +201,7 @@ $(document).ready(function () {
                     <legend>Task 5</legend>
                     ${firstTicket}
                     ${secondTicket}
+                    <pre id="ticket"></pre>
                     ${submit}
                 </form>`
     };
