@@ -46,7 +46,7 @@ $(document).ready(function () {
             case '3':
                 clearContainer();
                 let arrayOfTriangles = [];
-                let num = +prompt('Input number of triangles:');
+                let num = prompt('Input number of triangles:');
                 if (validateNumbers(num)) {
                     task3(num);
                 }

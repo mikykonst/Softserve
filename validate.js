@@ -10,6 +10,10 @@ let validateNumbers = function (num) {
     }
 };
 
-let isInteger = function(num) {
-  return (num ^ 0) === num;
+let isInteger = function (num) {
+    return (num ^ 0) === num;
+};
+
+let isFloat = function (num) {
+    return num === num && num % 1 !== 0;
 };
