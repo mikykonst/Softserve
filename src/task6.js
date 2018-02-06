@@ -1,9 +1,9 @@
 let createSequence = function (n, m) {
     if (isInteger(n)) {
-        let num = Math.ceil(Math.sqrt(m));
+        let num = getFirstNum(m);
         let arr = [];
 
-        for (let i = m; i < n; i++) {
+        for (let i = m; i < m+n; i++) {
             arr.push(num);
             num++;
         }
@@ -12,3 +12,5 @@ let createSequence = function (n, m) {
         alert('Input only integer values!');
     }
 };
+
+let getFirstNum = (m) => (Math.ceil(Math.sqrt(m)));

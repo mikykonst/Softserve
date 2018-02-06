@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $('.task-choose').click(function () {
-        let task = '';
-        task = ($(this).attr('id'));
+        let task = ($(this).attr('id'));
         start(task);
     });
     let container = $("#taskContainer");
@@ -10,7 +9,7 @@ $(document).ready(function () {
         switch (task) {
             case '1':
                 clearContainer();
-                container.append(task1());
+                container.append(task1);
                 $('#submit-1').click(function () {
                     let w = $('#width').val();
                     let h = $('#height').val();
@@ -24,7 +23,7 @@ $(document).ready(function () {
                 clearContainer();
                 let envelope1 = {};
                 let envelope2 = {};
-                container.append(task2());
+                container.append(task2);
 
                 $('#submit-2').click(function () {
                     let w1 = $('#firstEnvSideA').val();
@@ -47,7 +46,7 @@ $(document).ready(function () {
                 clearContainer();
                 let arrayOfTriangles = [];
                 let num = prompt('Input number of triangles:');
-                if (validateNumbers(num)) {
+                if (!isFloat(num) && validateNumbers(parseInt(num))) {
                     task3(num);
                 }
 
@@ -62,23 +61,24 @@ $(document).ready(function () {
                     createTriangles(arr);
                 });
                 let createTriangles = function (arr) {
+                    arrayOfTriangles = [];
                     for (let i = 0; i < arr.length; i += 4) {
                         let temp = arr.slice(i, i + 4);
-                        arrayOfTriangles.push({vertices: temp[0], a: +temp[1], b: +temp[2], c: +temp[3]});
+                        arrayOfTriangles.push(new Triangle(temp[0],temp[1],temp[2], temp[3]));
                     }
                     alert(runTriangles(arrayOfTriangles).toString());
                 };
                 break;
             case '4':
                 clearContainer();
-                container.append(task4());
+                container.append(task4);
                 $('#submit-4').click(function () {
                     $('#palindrome').text(findTheLongest($('#task4').val()));
                 });
                 break;
             case '5':
                 clearContainer();
-                container.append(task5());
+                container.append(task5);
                 let tickets = [];
                 $('#submit-5').click(function () {
                     tickets = [];
@@ -100,7 +100,7 @@ $(document).ready(function () {
                 break;
             case '6':
                 clearContainer();
-                container.append(task6());
+                container.append(task6);
 
                 $('#submit-6').click(function () {
                     let n = parseInt($('.length').val());
@@ -111,7 +111,7 @@ $(document).ready(function () {
                 break;
             case '7':
                 clearContainer();
-                container.append(task7());
+                container.append(task7);
                 $('#submit-7').click(function () {
                     let min = parseInt($('#min').val());
                     let max = parseInt($('#max').val());
@@ -120,119 +120,72 @@ $(document).ready(function () {
                 break;
         }
     };
-    let task1 = function () {
-        let width = `<input id="width" required class="form-control input-val" type="number" placeholder="width">`;
-        let height = `<input id="height" required class="form-control input-val" type="number" placeholder="height">`;
-        let symbol = `<input id="symbol" required class="form-control input-val" type="text" placeholder="symbol" >`;
-        let submit = `<input id="submit-1" class="btn btn-primary button" type="button" value="submit">`;
+    let task1 = `<form>
+                    <legend>Task 1</legend>
+                    <input id="width" required class="form-control input-val" type="number" placeholder="width">
+                    <input id="height" required class="form-control input-val" type="number" placeholder="height">
+                    <input id="symbol" required class="form-control input-val" type="text" placeholder="symbol" >
+                    <input id="submit-1" class="btn btn-outline-primary btn-lg btn-block" type="button" value="submit">
+                  </form>`;
 
-        return `<form>
-            <legend>Task 1</legend>
-                ${width}
-                ${height}
-                ${symbol}
-                ${submit}
-            </form>`
-    };
-
-    let task2 = function () {
-        let firstEnvSideA = `<input id="firstEnvSideA" class="form-control input-val" type="number" placeholder="first side" required>`;
-        let firstEnvSideB = `<input id="firstEnvSideB" class="form-control input-val" type="number" placeholder="second side" required>`;
-
-        let secondEnvSideA = `<input id="secondEnvSideA" class="form-control input-val" type="number" placeholder="first side" required>`;
-        let secondEnvSideB = `<input id="secondEnvSideB" class="form-control input-val" type="number" placeholder="second side" required>`;
-
-        let submit = `<input id="submit-2" class="btn btn-primary button" type="button" value="submit">`;
-
-        return `<fieldset>
-                <legend>Task 2</legend>
-                <form> 
-                <legend>Envelope 1</legend>
-                    ${firstEnvSideA}
-                    ${firstEnvSideB}    
-                </form>
-                <form>
-                <legend>Envelope 2</legend>
-                    ${secondEnvSideA}
-                    ${secondEnvSideB}
-                </form>
-                <pre id="env"></pre>
-                ${submit}
-            </fieldset>`;
-    };
+    let task2 = `<fieldset>
+                    <legend>Task 2</legend>
+                        <form> 
+                            <legend>Envelope 1</legend>
+                            <input id="firstEnvSideA" class="form-control input-val" type="number" placeholder="first side" required>
+                            <input id="firstEnvSideB" class="form-control input-val" type="number" placeholder="second side" required>    
+                        </form>
+                        <form>
+                            <legend>Envelope 2</legend>
+                            <input id="secondEnvSideA" class="form-control input-val" type="number" placeholder="first side" required>
+                            <input id="secondEnvSideB" class="form-control input-val" type="number" placeholder="second side" required>
+                        </form>
+                        <pre id="env"></pre>
+                        <input id="submit-2" class="btn btn-outline-primary btn-lg btn-block" type="button" value="submit">
+                </fieldset>`;
 
     let task3 = function (count) {
-        let submit = `<input id="submit-3" class="btn btn-primary" type="button" value="submit">`;
         container.append(`<fieldset class="form-group"></fieldset>`);
         for (let i = 0; i < count; i++) {
-            let legend = `<legend>Triangle #${i + 1}</legend>`;
-            let vertices = `<input class="triangle${i + 1} form-control" type="text" placeholder="Name of vertices">`;
-            let sideOne = `<input class="triangle${i + 1} form-control" type="number" placeholder="side 1">`;
-            let sideTwo = `<input class="triangle${i + 1} form-control" type="number" placeholder="side 2">`;
-            let sideTree = `<input class="triangle${i + 1} form-control" type="number" placeholder="side 3">`;
-            $('#taskContainer>fieldset').append(`${legend}
-                                                 ${vertices}
-                                                 ${sideOne}
-                                                 ${sideTwo}
-                                                 ${sideTree}`);
+            $('#taskContainer>fieldset').append(`<legend>Triangle #${i + 1}</legend>
+                                                 <input class="triangle${i + 1} form-control" type="text" placeholder="Name of vertices">
+                                                 <input class="triangle${i + 1} form-control" type="number" placeholder="side 1">
+                                                 <input class="triangle${i + 1} form-control" type="number" placeholder="side 2">
+                                                 <input class="triangle${i + 1} form-control" type="number" placeholder="side 3">`);
         }
-        $('#taskContainer>fieldset').append(submit);
+        $('#taskContainer>fieldset').append(`<input id="submit-3" class="btn btn-outline-primary btn-lg btn-block" type="button" value="submit">`);
     };
 
-    let task4 = function () {
-        let wordInput = `<input id="task4" class="form-control" type="text" placeholder="Input palindrome">`;
-        let submit = `<input id="submit-4" class="btn btn-primary" type="button" value="submit">`;
-
-        return `<form>
+    let task4 = `<form>
                 <legend>Task 4</legend>
-                    ${wordInput}
+                    <input id="task4" class="form-control" type="text" placeholder="Input palindrome">
                     <pre id="palindrome"></pre>
-                    ${submit}
-              </form>`
-    };
-
-    let task5 = function () {
-        let firstTicket = `<input class="tickets form-control" type="number" placeholder="First ticket">`;
-        let secondTicket = `<input class="tickets form-control" type="number" placeholder="Second ticket">`;
-        let submit = `<input id="submit-5" class="btn btn-primary" type="button" value="submit">`;
-
-        return `
-                <form action="">
-                    <legend>Task 5</legend>
-                    ${firstTicket}
-                    ${secondTicket}
-                    <pre id="ticket"></pre>
-                    ${submit}
-                </form>`
-    };
-
-    let task6 = function () {
-      let lenght = `<input class="form-control length" type="number" placeholder="Length of sequence">`;
-      let maxElem = `<input class="form-control max" type="number" placeholder="Max element">`;
-      let submit = `<input id="submit-6" class="btn btn-primary" type="button" value="submit">`;
-
-      return `<form>
-                <legend>Task 6</legend>
-                ${lenght}
-                ${maxElem}
-                <pre id="sequence"></pre>
-                ${submit}
+                    <input id="submit-4" class="btn btn-outline-primary btn-lg btn-block" type="button" value="submit">
               </form>`;
-    };
 
-    let task7 = function () {
-      let min = `<input id="min" class="form-control" type="number" placeholder="min or length">`;
-      let max = `<input id="max" class="form-control" type="number" placeholder="max">`;
-      let submit = `<input id="submit-7" class="btn btn-primary" value="submit">`;
+    let task5 = `<form action="">
+                    <legend>Task 5</legend>
+                    <input class="tickets form-control" type="number" placeholder="First ticket">
+                    <input class="tickets form-control" type="number" placeholder="Second ticket">
+                    <pre id="ticket"></pre>
+                    <input id="submit-5" class="btn btn-outline-primary btn-lg btn-block" type="button" value="submit">
+                </form>`;
 
-      return `<form>
+    let task6 = `<form>
+                <legend>Task 6</legend>
+                <input class="form-control length" type="number" placeholder="Length of sequence">
+                <input class="form-control max" type="number" placeholder="Max element">
+                <pre id="sequence"></pre>
+                <input id="submit-6" class="btn btn-outline-primary btn-lg btn-block" type="button" value="submit">
+              </form>`;
+
+    let task7 = `<form>
                 <legend>Task7</legend>
-                ${min}
-                ${max}
+                <input id="min" class="form-control" type="number" placeholder="min or length">
+                <input id="max" class="form-control" type="number" placeholder="max">
                 <pre id="fib"></pre>
-                ${submit}
-              </form>`
-    };
+                <input id="submit-7" class="btn btn-outline-primary btn-lg btn-block" value="submit">
+              </form>`;
 
     let clearContainer = function () {
         container.html('');

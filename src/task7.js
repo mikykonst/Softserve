@@ -1,9 +1,6 @@
 function findIntervalFib(min, max) {
     let array = [0, 1];
     if (isInteger(min) && validateNumbers(min)) {
-
-        let temp;
-
         if (isNaN(max)) {
             array = lengthSequence(min);
         } else if (isInteger(max)) {
@@ -21,7 +18,6 @@ function findIntervalFib(min, max) {
                     } else {
                         break;
                     }
-
                 }
             }
         }
@@ -30,10 +26,10 @@ function findIntervalFib(min, max) {
 }
 
 function fibbonachi(n) {
-    var a = 1,
+    let a = 1,
         b = 1;
-    for (var i = 3; i <= n; i++) {
-        var c = a + b;
+    for (let i = 3; i <= n; i++) {
+        let c = a + b;
         a = b;
         b = c;
     }
@@ -50,5 +46,5 @@ let lengthSequence = function (l) {
     }
     max += '0';
 
-    return findIntervalFib(+min, +max);
+    return findIntervalFib(parseInt(min), parseInt(max));
 };

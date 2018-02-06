@@ -26,7 +26,7 @@ let peterType = function (ticket) {
     return odd === even;
 };
 
-var startTickets = function (min, max) {
+let startTickets = function (min, max) {
 
     let result = {
         moscow: 0,

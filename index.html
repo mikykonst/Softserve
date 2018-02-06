@@ -10,40 +10,46 @@
 <body>
 
 <div class="container">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">JS Elementary Tasks</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a id="1" class="task-choose" href="#">Task 1</a></li>
-                <li><a id="2" class="task-choose" href="#">Task 2</a></li>
-                <li><a id="3" class="task-choose" href="#">Task 3</a></li>
-                <li><a id="4" class="task-choose" href="#">Task 4</a></li>
-                <li><a id="5" class="task-choose" href="#">Task 5</a></li>
-                <li><a id="6" class="task-choose" href="#">Task 6</a></li>
-                <li><a id="7" class="task-choose" href="#">Task 7</a></li>
-                <li><a href="tests.html">Tests</a></li>
-            </ul>
-        </div>
-    </nav>
     <div class="row">
-        <div id="taskContainer" class="col-md-12">
-
+        <div class="col">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <li class="nav-item"><a id="1" class="task-choose nav-link active" href="#">Task 1</a></li>
+                        <li class="nav-item"><a id="2" class="task-choose nav-link" href="#">Task 2</a></li>
+                        <li class="nav-item"><a id="3" class="task-choose nav-link" href="#">Task 3</a></li>
+                        <li class="nav-item"><a id="4" class="task-choose nav-link" href="#">Task 4</a></li>
+                        <li class="nav-item"><a id="5" class="task-choose nav-link" href="#">Task 5</a></li>
+                        <li class="nav-item"><a id="6" class="task-choose nav-link" href="#">Task 6</a></li>
+                        <li class="nav-item"><a id="7" class="task-choose nav-link" href="#">Task 7</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tests.html">Tests</a></li>
+                    </div>
+                </div>
+            </nav>
         </div>
     </div>
+        <div class="row">
+            <div id="taskContainer" class="col">
 
-</div>
-<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="validate.js"></script>
-<script src="src/task1.js"></script>
-<script src="src/task2.js"></script>
-<script src="src/task3.js"></script>
-<script src="src/task4.js"></script>
-<script src="src/task5.js"></script>
-<script src="src/task6.js"></script>
-<script src="src/task7.js"></script>
-<script src="main.js"></script>
-<script src="tests/test.js"></script>
+            </div>
+        </div>
+
+    </div>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="validate.js"></script>
+    <script src="src/task1.js"></script>
+    <script src="src/task2.js"></script>
+    <script src="src/task3.js"></script>
+    <script src="src/task4.js"></script>
+    <script src="src/task5.js"></script>
+    <script src="src/task6.js"></script>
+    <script src="src/task7.js"></script>
+    <script src="main.js"></script>
+    <script src="tests/test.js"></script>
 </body>
 </html>
